@@ -18,11 +18,6 @@ exports.getDoctors = function(medicalIssue, callback) {
       var doctors = [];
       for(var i = 0; i < numDoctors; i++){
 
-        console.log(result.data[i].profile.image_url+
-        result.data[i].profile.first_name + " " +
-        result.data[i].profile.middle_name + " " +
-        result.data[i].profile.last_name +
-        result.data[i].profile.gender);
         newDoc = new Doctor(
           result.data[i].profile.image_url,
           result.data[i].profile.first_name + " " +
