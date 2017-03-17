@@ -1,4 +1,6 @@
 var apiKey = require("./../.env").apiKey;
+var googleKey = require("./../.env").googleKey;
+
 
 //old location: &location=45.5231%2C-122.6765%2C%205
 //new location: &location=37.773%2C-122.413%2C100
@@ -16,6 +18,9 @@ exports.getDoctors = function(medicalIssue, callback) {
    .then(function(result) {
       console.log(result);
       var numDoctors = result.data.length;
+      if(!numDoctors){
+        callback(false);
+      }
       var doctors = [];
       for(var i = 0; i < numDoctors; i++){
         var numSpecialties = result.data[i].specialties.length;
@@ -23,8 +28,7 @@ exports.getDoctors = function(medicalIssue, callback) {
         for(var j = 0; j < numSpecialties; j++){
           specialties+=(result.data[i].specialties[j].actor);
         }
-
-        newDoc = new Doctor(
+        var newDoc = new Doctor(
           result.data[i].profile.image_url,
           result.data[i].profile.first_name + " " +
           result.data[i].profile.last_name,
@@ -32,6 +36,7 @@ exports.getDoctors = function(medicalIssue, callback) {
           specialties,
           result.data[i].profile.bio
         );
+
         callback(newDoc);
         doctors.push(newDoc);
       }

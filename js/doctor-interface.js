@@ -2,6 +2,8 @@ var getDoctors = require("./../js/doctor.js").getDoctors;
 var Doctor = require("./../js/doctor.js").doctorModule;
 
 function displayDoctors(docObj){
+console.log(docObj);
+  if(docObj){
   $("#doctor-display").append("<div class='doctor'>" +
   "<img src='" + docObj.image +"'>" +
     "<ul>" +
@@ -14,6 +16,10 @@ function displayDoctors(docObj){
       "<p>" + docObj.bio + "</p>" +
     "</div>" +
     "<div>");
+  } else {
+    $("#doctor-display").html("");
+    $("#doctor-display").append("<h2>No doctors found</h2>");
+  }
 }
 
 $(document).ready(function(){
