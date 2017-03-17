@@ -1,5 +1,7 @@
 var getDoctors = require("./../js/doctor.js").getDoctors;
 var getSpecialties = require("./../js/doctor.js").getSpecialties;
+var getConditions = require("./../js/doctor.js").getConditions;
+
 
 var Doctor = require("./../js/doctor.js").doctorModule;
 
@@ -34,6 +36,12 @@ function displaySpecialties(special){
       "</div>" +
     "</div>");
 }
+function displayConditions(condition){
+  $("#display").append(
+    "<div class='condition alert alert-success'>" +
+      "<h4 class='title'>" + condition.name + "</h4>" +
+    "</div>");
+}
 
 $(document).ready(function(){
   $("#doctor-lookup").submit(function(e){
@@ -46,6 +54,11 @@ $(document).ready(function(){
     e.preventDefault();
     $("#display").html("");
     getSpecialties($("#specialty-number").val(), displaySpecialties);
+  });
+  $("#condition-lookup").submit(function(e){
+    e.preventDefault();
+    $("#display").html("");
+    getConditions($("#condition-number").val(), displayConditions);
   });
 
 });
