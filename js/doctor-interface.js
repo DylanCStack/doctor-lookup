@@ -8,8 +8,10 @@ function displayDoctors(docObj){
       "<li>" + docObj.name + "</li>" +
       "<li>" + docObj.gender + "</li>" +
     "</ul>" +
-    "<h5>Bio:</h5>" +
-    "<p>" + docObj.bio + "</p>" +
+    "<div class='bio'>" +
+      "<h4>Bio:</h4>" +
+      "<p>" + docObj.bio + "</p>" +
+    "</div>" +
     "<div>");
 }
 

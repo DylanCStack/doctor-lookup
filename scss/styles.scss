@@ -1,0 +1,38 @@
+.jumbotron {
+  background-color: #c1d9ff;
+}
+
+.doctor {
+  border:3px double skyblue;
+  background-color: #f4f8ff;
+  margin: 50px;
+  width:25%;
+  min-width: 200px;
+  float:left;
+  border-radius:0px 20px;
+  *{
+    border-radius:0px 20px;
+
+  }
+  ul {
+    padding:5px;
+  }
+  ul>li {
+    list-style: none;
+    float:left;
+    margin:5px;
+  }
+  ul>li:first-child {
+    padding-right: 5px;
+    border-right: 1px solid lightgrey;
+  }
+  .bio {
+    *:first-child{
+      text-decoration: underline;
+    }
+    clear:both;
+    overflow-y: auto;
+    height:150px;
+    border-top: 2px dashed white;
+  }
+}
