@@ -3,11 +3,12 @@ var apiKey = require("./../.env").apiKey;
 //old location: &location=45.5231%2C-122.6765%2C%205
 //new location: &location=37.773%2C-122.413%2C100
 
-function Doctor(image, name, gender, bio){
+function Doctor(image, name, gender, specialties , bio){
 //add , education, bio, accepting,
   this.image = image;
   this.name = name;
   this.gender = gender;
+  this.specialties = specialties;
   this.bio = bio;
 }
 exports.getDoctors = function(medicalIssue, callback) {
@@ -17,12 +18,18 @@ exports.getDoctors = function(medicalIssue, callback) {
       var numDoctors = result.data.length;
       var doctors = [];
       for(var i = 0; i < numDoctors; i++){
+        var numSpecialties = result.data[i].specialties.length;
+        var specialties = "";
+        for(var j = 0; j < numSpecialties; j++){
+          specialties+=(result.data[i].specialties[j].actor);
+        }
 
         newDoc = new Doctor(
           result.data[i].profile.image_url,
           result.data[i].profile.first_name + " " +
           result.data[i].profile.last_name,
           result.data[i].profile.gender,
+          specialties,
           result.data[i].profile.bio
         );
         callback(newDoc);
