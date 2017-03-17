@@ -18,7 +18,7 @@ console.log(docObj);
     "<div>");
   } else {
     $("#doctor-display").html("");
-    $("#doctor-display").append("<h2>No doctors found</h2>");
+    $("#doctor-display").append("<div class='alert alert-warning'>No doctors found</div>");
   }
 }
 
