@@ -12,4 +12,4 @@ A website which allows you to lookup doctors in your area(or any specified area)
 2. Navigate to the project root and run the command $ `npm install`. This will install all back-end dependencies.
 3. When that finishes, run the command $ `bower install`. This will install all front-end dependencies.
 4. Install the ["Allow-Control-Allow-Origin:\*"](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en) extension to google chrome. 
-4. When that finishes, run the command $ `gulp serve`. This will compile all code into a browser readable format, start a local server, and open index.html in your default web browser.
+4. Finally, run the command $ `gulp serve`. This will compile all code into a browser readable format, start a local server, and open index.html in your default web browser.
