@@ -2,7 +2,7 @@ var getDoctors = require("./../js/doctor.js").getDoctors;
 var Doctor = require("./../js/doctor.js").doctorModule;
 
 function displayDoctors(docObj){
-  
+
   $("#doctor-display").append("<div class='doctor'>" +
   "<img src='" + docObj.image +"'>" +
     "<ul>" +
@@ -19,6 +19,7 @@ function displayDoctors(docObj){
 $(document).ready(function(){
   $("#doctor-lookup").submit(function(e){
     e.preventDefault();
+    $("#doctor-display").html("");
     getDoctors($("#medicalIssue").val(), displayDoctors);
   });
 });
