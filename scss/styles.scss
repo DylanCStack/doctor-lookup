@@ -27,6 +27,9 @@
     padding-right: 10px;
     border-right: 1px solid lightgrey;
   }
+  p {
+    clear:both;
+  }
   .bio {
     *:first-child{
       text-decoration: underline;

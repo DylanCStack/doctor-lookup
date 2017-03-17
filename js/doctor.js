@@ -26,8 +26,9 @@ exports.getDoctors = function(medicalIssue, callback) {
         var numSpecialties = result.data[i].specialties.length;
         var specialties = "";
         for(var j = 0; j < numSpecialties; j++){
-          specialties+=(result.data[i].specialties[j].actor);
+          specialties+=", "+(result.data[i].specialties[j].actor);
         }
+        specialties = specialties.substring(1);
         var newDoc = new Doctor(
           result.data[i].profile.image_url,
           result.data[i].profile.first_name + " " +
