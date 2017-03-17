@@ -2,6 +2,7 @@ var getDoctors = require("./../js/doctor.js").getDoctors;
 var Doctor = require("./../js/doctor.js").doctorModule;
 
 function displayDoctors(docObj){
+  
   $("#doctor-display").append("<div class='doctor'>" +
   "<img src='" + docObj.image +"'>" +
     "<ul>" +
