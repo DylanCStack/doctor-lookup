@@ -13,6 +13,7 @@ function Doctor(image, name, gender, specialties , bio){
   this.specialties = specialties;
   this.bio = bio;
 }
+
 exports.getDoctors = function(medicalIssue, callback) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+ medicalIssue+'&location=45.5231%2C-122.6765%2C%205&user_location=45.5231%2C-122.6765&skip=0&limit=20&user_key=' + apiKey)
    .then(function(result) {
@@ -42,6 +43,32 @@ exports.getDoctors = function(medicalIssue, callback) {
         doctors.push(newDoc);
       }
       console.log(doctors);
+    })
+   .fail(function(error){
+      console.log("fail");
+    });
+};
+exports.getSpecialties = function(specialtiesSearched, callback) {
+  var skipNum = 0;
+  if(specialtiesSearched > 100){
+    skipNum = parseInt(specialtiesSearched/100);
+    specialtiesSearched = specialtiesSearched%100;
+  }
+  $.get('https://api.betterdoctor.com/2016-03-01/specialties?limit='+ specialtiesSearched + skipNum +'&user_key=' + apiKey)
+   .then(function(result) {
+      var numSpecialties = result.data.length;
+      var allSpecialties = [];
+      for(var i = 0; i < numSpecialties; i++){
+        allSpecialties.push(result.data[i]);
+        // callback(result.data[i]);
+      }
+      allSpecialties.sort(function(a, b){
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+      });
+      for(var i = 0; i < allSpecialties.length; i++){
+        callback(allSpecialties[i]);
+      }
     })
    .fail(function(error){
       console.log("fail");
