@@ -75,4 +75,31 @@ exports.getSpecialties = function(specialtiesSearched, callback) {
       console.log("fail");
     });
 };
+exports.getConditions = function(conditionsSearched, callback) {
+  var skipNum = 0;
+  if(conditionsSearched > 100){
+    skipNum = parseInt(conditionsSearched/100);
+    conditionsSearched = conditionsSearched%100;
+  }
+  $.get('https://api.betterdoctor.com/2016-03-01/conditions?limit='+ conditionsSearched + skipNum +'&user_key=' + apiKey)
+   .then(function(result) {
+      var numConditions = result.data.length;
+      var allConditions = [];
+      for(var i = 0; i < numConditions; i++){
+        allConditions.push(result.data[i]);
+        // callback(result.data[i]);
+      }
+      allConditions.sort(function(a, b){
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+        return 0;
+      });
+      for(var i = 0; i < allConditions.length; i++){
+        callback(allConditions[i]);
+      }
+    })
+   .fail(function(error){
+      console.log("fail");
+    });
+};
 exports.doctorModule = Doctor;
