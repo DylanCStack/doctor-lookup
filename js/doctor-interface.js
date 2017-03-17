@@ -6,7 +6,7 @@ var Doctor = require("./../js/doctor.js").doctorModule;
 function displayDoctors(docObj){
 console.log(docObj);
   if(docObj){
-  $("#doctor-display").append("<div class='doctor'>" +
+  $("#display").append("<div class='doctor'>" +
   "<img src='" + docObj.image +"'>" +
     "<ul>" +
       "<li>" + docObj.name + "</li>" +
@@ -19,15 +19,15 @@ console.log(docObj);
     "</div>" +
     "<div>");
   } else {
-    $("#doctor-display").html("");
-    $("#doctor-display").append("<div class='alert alert-warning'>No doctors found</div>");
+    $("#display").html("");
+    $("#display").append("<div class='alert alert-warning'>No doctors found</div>");
   }
 }
 function displaySpecialties(special){
-  $("#doctor-display").append(
-    "<div class='specalty'>" +
-      "<h4>" + special.name + "</h4>" +
-      "<h5>" + special.category + "</h5>" +
+  $("#display").append(
+    "<div class='specialty'>" +
+      "<h4 class='title'>" + special.name + "</h4>" +
+      "<h5 class='title'>" + special.category + "</h5>" +
       "<div class='description well'>" +
         "<h5>Description:</h5>" +
         "<p>" + special.description + "</p>" +
@@ -38,17 +38,14 @@ function displaySpecialties(special){
 $(document).ready(function(){
   $("#doctor-lookup").submit(function(e){
     e.preventDefault();
-    $("#doctor-display").html("");
+    $("#display").html("");
     getDoctors($("#medicalIssue").val(), displayDoctors);
   });
 
   $("#specialty-lookup").submit(function(e){
     e.preventDefault();
-    $("#doctor-display").html("");
-
+    $("#display").html("");
     getSpecialties($("#specialty-number").val(), displaySpecialties);
   });
-  $("#view-more").click(function(){
-    //will query the api for more specialties to view, skipping the ones already viewed, add after working tabs
-  });
+
 });

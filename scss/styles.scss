@@ -7,7 +7,7 @@
   margin-bottom: 0px;
 }
 
-.doctor {
+.doctor, .specialty {
   border:3px double skyblue;
   background-color: #f4f8ff;
   margin: 50px;
@@ -34,7 +34,7 @@
   p {
     clear:both;
   }
-  .bio {
+  .bio, .description {
     *:first-child{
       text-decoration: underline;
     }
@@ -43,4 +43,9 @@
     height:150px;
     border-top: 2px dashed white;
   }
+}
+.specialty{
+   .title{
+     margin-left: 25px;
+   }
 }

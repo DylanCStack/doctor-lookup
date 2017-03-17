@@ -65,6 +65,7 @@ exports.getSpecialties = function(specialtiesSearched, callback) {
       allSpecialties.sort(function(a, b){
         if(a.name < b.name) return -1;
         if(a.name > b.name) return 1;
+        return 0;
       });
       for(var i = 0; i < allSpecialties.length; i++){
         callback(allSpecialties[i]);
